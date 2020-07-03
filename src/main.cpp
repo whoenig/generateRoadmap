@@ -24,7 +24,6 @@
 
 // OMPL
 #include <ompl/base/spaces/RealVectorStateSpace.h>
-#include <ompl/base/terminationconditions/IterationTerminationCondition.h>
 #include <ompl/geometric/planners/prm/SPARS.h>
 #include <ompl/geometric/planners/prm/SPARStwo.h>
 
@@ -419,7 +418,8 @@ int main(int argc, char** argv) {
       p.setStretchFactor(node["stretchFactor"].as<float>());
       p.setMaxFailures(node["maxFailures"].as<int>());
 
-      p.constructRoadmap(/*base::timedPlannerTerminationCondition(30)*/base::IterationTerminationCondition(node["maxIter"].as<int>()), true);
+      // p.constructRoadmap(/*base::timedPlannerTerminationCondition(30)*/base::IterationTerminationCondition(node["maxIter"].as<int>()), true);
+      p.constructRoadmap(base::timedPlannerTerminationCondition(30), true);
 
       p.printDebug();
 #if 1
@@ -491,7 +491,8 @@ int main(int argc, char** argv) {
       p.setStretchFactor(node["stretchFactor"].as<float>());
       p.setMaxFailures(node["maxFailures"].as<int>());
 
-      p.constructRoadmap(/*base::timedPlannerTerminationCondition(30)*/base::IterationTerminationCondition(node["maxIter"].as<int>()), true);
+      // p.constructRoadmap(/*base::timedPlannerTerminationCondition(30)*/base::IterationTerminationCondition(node["maxIter"].as<int>()), true);
+      p.constructRoadmap(base::timedPlannerTerminationCondition(30), true);
 
       const auto& roadmapOMPL = p.getRoadmap();
       auto stateProperty = boost::get(geometric::SPARStwo::vertex_state_t(), roadmapOMPL);
