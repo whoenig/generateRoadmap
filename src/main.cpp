@@ -24,6 +24,7 @@
 
 // OMPL
 #include <ompl/base/spaces/RealVectorStateSpace.h>
+#include <ompl/base/terminationconditions/IterationTerminationCondition.h>
 #include <ompl/geometric/planners/prm/SPARS.h>
 #include <ompl/geometric/planners/prm/SPARStwo.h>
 
